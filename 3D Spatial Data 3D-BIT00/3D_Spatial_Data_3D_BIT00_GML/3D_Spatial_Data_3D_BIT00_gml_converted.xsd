@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:fme="http://www.safe.com/gml/fme" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.safe.com/gml/fme" elementFormDefault="qualified">
+<import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
+<element name="b1000_Tile" type="fme:b1000_TileType" substitutionGroup="gml:_Feature"/>
+<complexType name="b1000_TileType">
+<complexContent>
+<extension base="gml:AbstractFeatureType">
+<sequence>
+<element name="OBJECTID" minOccurs="0" type="int"/>
+<element name="SHEETNO" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="50"/>
+</restriction>
+</simpleType></element>
+<element name="Min_x" minOccurs="0" type="int"/>
+<element name="Min_y" minOccurs="0" type="int"/>
+<element name="Max_x" minOccurs="0" type="int"/>
+<element name="Max_y" minOccurs="0" type="int"/>
+<element name="Format_3DS" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="255"/>
+</restriction>
+</simpleType></element>
+<element name="Format_FBX" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="255"/>
+</restriction>
+</simpleType></element>
+<element name="Format_MAX" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="255"/>
+</restriction>
+</simpleType></element>
+<element name="Format_VRML" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="255"/>
+</restriction>
+</simpleType></element>
+<element name="REVISIONDATE" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="20"/>
+</restriction>
+</simpleType></element>
+<element name="REMARKS" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="65536"/>
+</restriction>
+</simpleType></element>
+<element ref="gml:surfaceProperty" minOccurs="0"/>
+<element ref="gml:multiSurfaceProperty" minOccurs="0"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>

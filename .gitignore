@@ -1,0 +1,17 @@
+# Exclude contents of every download directory, retaining a placeholder.
+**/download/*
+!**/download/.gitkeep
+
+# Python caches and local environments.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local secrets and operating-system metadata.
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:fme="http://www.safe.com/gml/fme" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.safe.com/gml/fme" elementFormDefault="qualified">
+<import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
+<element name="OpenData_3D_HK80" type="fme:OpenData_3D_HK80Type" substitutionGroup="gml:_Feature"/>
+<complexType name="OpenData_3D_HK80Type">
+<complexContent>
+<extension base="gml:AbstractFeatureType">
+<sequence>
+<element name="GRID_NAME" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="20"/>
+</restriction>
+</simpleType></element>
+<element name="LOC_EN" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="200"/>
+</restriction>
+</simpleType></element>
+<element name="LOC_TC" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="50"/>
+</restriction>
+</simpleType></element>
+<element name="LOC_SC" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="50"/>
+</restriction>
+</simpleType></element>
+<element name="MIN_X" minOccurs="0" type="double"/>
+<element name="MIN_Y" minOccurs="0" type="double"/>
+<element name="MAX_X" minOccurs="0" type="double"/>
+<element name="MAX_Y" minOccurs="0" type="double"/>
+<element name="MIN_LNG" minOccurs="0" type="double"/>
+<element name="MIN_LAT" minOccurs="0" type="double"/>
+<element name="MAX_LNG" minOccurs="0" type="double"/>
+<element name="MAX_LAT" minOccurs="0" type="double"/>
+<element name="MODI_DATE" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="20"/>
+</restriction>
+</simpleType></element>
+<element name="OSGB_URL" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="254"/>
+</restriction>
+</simpleType></element>
+<element name="OBJ_URL" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="254"/>
+</restriction>
+</simpleType></element>
+<element name="Cesium_URL" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="254"/>
+</restriction>
+</simpleType></element>
+<element name="Shape_Leng" minOccurs="0" type="double"/>
+<element name="Shape_Area" minOccurs="0" type="double"/>
+<element ref="gml:surfaceProperty" minOccurs="0"/>
+<element ref="gml:multiSurfaceProperty" minOccurs="0"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>
