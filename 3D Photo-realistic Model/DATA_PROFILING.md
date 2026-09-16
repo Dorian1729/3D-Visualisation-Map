@@ -515,3 +515,23 @@ python full_download_models.py --workers 2
 - CSDI metadata panel: <https://portal.csdi.gov.hk/geoportal/#metadataInfoPanel>
 - Planning Department model notes: <https://www.pland.gov.hk/pland_en/info_serv/3D_models/Remarks_for_the_3D_Photo-realistic_Model.pdf>
 - Kowloon metadata archive referenced by CSDI: <https://www.pland.gov.hk/pland_tc/info_serv/3D_models/Metadata/KLN_metadata.zip>
+
+## 15. 中环三块 OBJ 独立下载脚本
+
+[`download_central_obj_test.py`](./download_central_obj_test.py) 使用 Python 3.10+ 标准库，固定下载中环 `tile_20_26`、`tile_20_27`、`tile_20_28`。三块由南向北共享完整边界，每块 250 × 250 米，合计 250 × 750 米。
+
+在仓库根目录执行：
+
+```powershell
+# 预览，不联网、不写入文件
+python ".\3D Photo-realistic Model\download_central_obj_test.py" --dry-run
+
+# 下载三块，并解压 OBJ、MTL、纹理和 config.json
+python ".\3D Photo-realistic Model\download_central_obj_test.py"
+```
+
+输出固定为脚本旁的 `download/test/`，不受运行命令时的工作目录影响。目录内保留三个原始 ZIP，分别解压至 `tile_20_26/`、`tile_20_27/`、`tile_20_28/`；另生成 `central_tiles.json`（坐标变换、OBJ 路径和来源）和 `central_tiles.geojson`（三块空间边界）。
+
+已对本地已有三块 ZIP 完成 CRC 校验，并确认 `config.json` 中的 `model_transform` 完全相同。脚本也会检查变换一致性后再解压。导入三个目录中的 OBJ 时，保持相同轴向、比例和位置设置，保留原始顶点坐标，**不要分别居中**。保留材质、纹理的目录关系，避免同名文件互相覆盖。脚本不合并网格或焊接边界顶点。
+
+先写 `.zip.part`，通过完整 CRC 和配套文件检查后才改名。再次运行会校验并跳过完整 ZIP，然后恢复解压文件；会覆盖各分块目录中的同名解压文件，编辑模型请另存。已有 ZIP 损坏时报错，不自动覆盖；`.part` 重试从头下载，不支持字节级续传。默认每块最多尝试 3 次、网络超时 120 秒，可通过 `--retries`、`--timeout` 调整。
